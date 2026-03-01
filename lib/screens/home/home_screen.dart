@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:morocology/screens/quick/nature_explorer_screen.dart';
+import 'package:morocology/screens/quick/famous_destinations_screen.dart';
+import 'package:morocology/screens/quick/famous_people_screen.dart';
+import 'package:morocology/screens/quick/cultural_event_screen.dart';
 import '../../models/destination_model.dart';
 import '../../core/widgets/destination_card.dart';
 import '../../core/widgets/quick_access_item.dart';
@@ -45,25 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
       backgroundColor: const Color(0xFFF8F5F2),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color(0xFFB08968),
-        unselectedItemColor: Colors.grey,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_city),
-            label: "Destinations",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.palette), label: "Culture"),
-          BottomNavigationBarItem(icon: Icon(Icons.landscape), label: "Nature"),
-          BottomNavigationBarItem(icon: Icon(Icons.more_horiz), label: "More"),
-        ],
-      ),
       body: SafeArea(
-        bottom: false,
         child: SingleChildScrollView(
           padding: const EdgeInsets.only(bottom: 16),
           child: Column(
@@ -163,6 +149,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: Icons.location_city,
                       title: "Famous Destinations",
                       iconColor: Color(0xFFB08968),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const FamousDestinationsScreen(),
+                          ),
+                        );
+                      },
                     ),
                     QuickAccessItem(
                       icon: Icons.work,
@@ -205,13 +199,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     QuickAccessItem(
                       icon: Icons.people,
-                      title: "Inspiring Figures",
+                      title: "Famous People",
                       iconColor: Colors.orange,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const FamousPeopleScreen(),
+                          ),
+                        );
+                      },
                     ),
                     QuickAccessItem(
                       icon: Icons.event,
-                      title: "Cultural Events",
+                      title: "Cultural Event",
                       iconColor: Colors.amber,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const CulturalEventScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
